@@ -1,0 +1,32 @@
+//Print the elements of an array in the decreasing frequency if 2 numbers have same frequency then print the one which came first.
+#include<bits/stdc++.h>
+using namespace std;
+int hash[10000]={0};
+int acr[10000];
+bool compare(int a,int b)
+{
+    if(hash[a]==hash[b])
+        return(acr[a]<acr[b]);
+    else
+        return(hash[a]>hash[b]);
+}
+int main()
+{
+    int N;
+    cin>>N;
+    memset(acr,-1,sizeof(acr));
+    int arr[N+1];
+    for(int i=0;i<N;i++)
+    {
+        cin>>arr[i];
+        hash[arr[i]]++;
+        if(acr[arr[i]]==-1)
+        acr[arr[i]]=i;
+    }
+    sort(arr,arr+N,compare);
+    for(int i=0;i<N;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    
+}
